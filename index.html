@@ -13,10 +13,10 @@
     <meta property="og:title" content="SpeakEasy Collective">
     <meta property="og:description" content="An exclusive community for discerning members. Invitation only.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourusername.github.io/speakeasy-invites">
+    <meta property="og:url" content="https://thomsonm685.github.io/speak-easy-invite.github.io">
     
-    <!-- App Store Meta Tags -->
-    <meta name="apple-itunes-app" content="app-id=YOUR_APP_STORE_ID">
+    <!-- App Store Meta Tags (will need to be updated when you have an App Store ID) -->
+    <meta name="apple-itunes-app" content="app-clip-bundle-id=SpeakEasy.Speak-Easy-Members.Clip">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍸</text></svg>">
@@ -323,7 +323,7 @@
                 SpeakEasy Collective
             </a>
             <div class="app-download">
-                <a href="https://apps.apple.com/app/id0" class="download-btn" id="ios-download">
+                <a href="#" class="download-btn" id="ios-download">
                     📱 Download for iOS
                 </a>
                 <a href="#invitation" class="download-btn">
@@ -408,9 +408,10 @@
                 // Redirect to App Store or app clip URL
                 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
                 if (isIOS) {
-                    window.location.href = `https://yourusername.github.io/speakeasy-invites/clip?code=${encodeURIComponent(code)}`;
+                    window.location.href = `https://thomsonm685.github.io/speak-easy-invite.github.io/clip?code=${encodeURIComponent(code)}`;
                 } else {
-                    window.location.href = 'https://apps.apple.com/app/id0'; // Replace with your App Store URL
+                    // For non-iOS devices, show message about iOS requirement
+                    showMessage('SpeakEasy is currently available on iOS only. Please visit on an iPhone or iPad.', 'error');
                 }
             }, 2000);
         }
@@ -442,6 +443,14 @@
                 downloadBtn.onclick = function(e) {
                     e.preventDefault();
                     alert('SpeakEasy is currently available on iOS only. Android version coming soon!');
+                };
+            } else {
+                // For iOS devices, this will be updated when you have an App Store ID
+                downloadBtn.textContent = '📱 Coming Soon to App Store';
+                downloadBtn.style.opacity = '0.6';
+                downloadBtn.onclick = function(e) {
+                    e.preventDefault();
+                    alert('SpeakEasy will be available in the App Store soon!');
                 };
             }
         });

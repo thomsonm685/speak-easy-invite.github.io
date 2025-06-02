@@ -1,29 +1,423 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>SpeakEasy Invitation</title>
-    <meta name="apple-itunes-app" content="app-clip-bundle-id=com.yourcompany.speakeasy.clip">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakEasy Invitation - Join the Collective</title>
+    
+    <!-- App Clip Meta Tags -->
+    <meta name="apple-itunes-app" content="app-clip-bundle-id=SpeakEasy.Speak-Easy-Members.Clip">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SpeakEasy Invite">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="You've been invited to join SpeakEasy Collective - An exclusive community for discerning members.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="SpeakEasy Invitation">
+    <meta property="og:description" content="You've been invited to join an exclusive community">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍸</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .invitation-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .logo {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .invitation-container h1 {
+            color: #1a1a2e;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .invitation-container .subtitle {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .invitation-details {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-label {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .detail-value {
+            color: #1a1a2e;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .invitation-code {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        
+        .tier-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .tier-bronze {
+            background: linear-gradient(45deg, #CD7F32, #DEB887);
+            color: white;
+        }
+        
+        .tier-silver {
+            background: linear-gradient(45deg, #C0C0C0, #E5E5E5);
+            color: #333;
+        }
+        
+        .tier-gold {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #333;
+        }
+        
+        .status-active {
+            color: #28a745;
+            font-weight: 600;
+        }
+        
+        .status-expired {
+            color: #dc3545;
+            font-weight: 600;
+        }
+        
+        .install-app-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .install-app-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .install-app-btn:active {
+            transform: translateY(0);
+        }
+        
+        .fallback-message {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f8d7da;
+            border-radius: 6px;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 2px solid #667eea;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .invitation-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .invitation-container h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                font-size: 50px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>You're invited to SpeakEasy!</h1>
-    <p>This page will launch the App Clip on iOS devices.</p>
-    <p>On other devices, it shows invitation details.</p>
-    
-    <script>
-        // Extract invitation code from URL
-        const params = new URLSearchParams(window.location.search);
-        const code = params.get('code');
-        const tier = params.get('tier');
+    <div class="invitation-container">
+        <div class="logo">🍸</div>
+        <h1>You're Invited!</h1>
+        <p class="subtitle">Join SpeakEasy Collective - An exclusive community for discerning members</p>
         
-        if (code) {
-            document.body.innerHTML += `
-                <div>
-                    <h2>Invitation Details</h2>
-                    <p>Code: ${code}</p>
-                    <p>Tier: ${tier}</p>
-                    <p>Download SpeakEasy from the App Store to use this invitation.</p>
+        <div class="invitation-details" id="invitationDetails">
+            <!-- Details will be populated by JavaScript -->
+        </div>
+        
+        <button class="install-app-btn" id="installBtn" onclick="handleInstallClick()">
+            <span class="loading hidden" id="loading"></span>
+            <span id="btnText">Get SpeakEasy App</span>
+        </button>
+        
+        <div class="fallback-message hidden" id="fallbackMessage">
+            <strong>Not on iOS?</strong><br>
+            SpeakEasy is currently available on iPhone and iPad. Save this invitation code and visit the App Store when you have access to an iOS device.
+        </div>
+        
+        <div class="error-message hidden" id="errorMessage">
+            <!-- Error messages will appear here -->
+        </div>
+    </div>
+
+    <script>
+        // Extract invitation parameters from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const inviteCode = urlParams.get('code');
+        const memberTier = urlParams.get('tier') || 'bronze';
+        const expiresAt = urlParams.get('expires');
+        
+        // Check if device is iOS
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isAppClip = window.navigator.standalone === false && isIOS;
+        
+        function formatTier(tier) {
+            const tierMap = {
+                'bronze': { name: 'Bronze', class: 'tier-bronze', emoji: '🥉' },
+                'silver': { name: 'Silver', class: 'tier-silver', emoji: '🥈' },
+                'gold': { name: 'Gold', class: 'tier-gold', emoji: '🥇' }
+            };
+            return tierMap[tier.toLowerCase()] || tierMap['bronze'];
+        }
+        
+        function formatExpiryDate(timestamp) {
+            if (!timestamp) return 'No expiration';
+            
+            const date = new Date(parseInt(timestamp) * 1000);
+            const now = new Date();
+            
+            if (date < now) {
+                return { text: 'Expired', status: 'expired' };
+            }
+            
+            const options = { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            
+            return { 
+                text: date.toLocaleDateString('en-US', options), 
+                status: 'active' 
+            };
+        }
+        
+        function displayInvitationDetails() {
+            const detailsContainer = document.getElementById('invitationDetails');
+            
+            if (!inviteCode) {
+                detailsContainer.innerHTML = `
+                    <div class="error-message">
+                        Invalid invitation link. Please check your invitation and try again.
+                    </div>
+                `;
+                document.getElementById('installBtn').style.display = 'none';
+                return;
+            }
+            
+            const tier = formatTier(memberTier);
+            const expiry = formatExpiryDate(expiresAt);
+            
+            detailsContainer.innerHTML = `
+                <div class="detail-row">
+                    <span class="detail-label">Invitation Code</span>
+                    <span class="detail-value invitation-code">${inviteCode}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Membership Tier</span>
+                    <span class="detail-value">
+                        <span class="tier-badge ${tier.class}">
+                            ${tier.emoji} ${tier.name}
+                        </span>
+                    </span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Expires</span>
+                    <span class="detail-value ${expiry.status ? 'status-' + expiry.status : ''}">${expiry.text || expiry}</span>
                 </div>
             `;
+            
+            // If invitation is expired, update button and show message
+            if (expiry.status === 'expired') {
+                const btn = document.getElementById('installBtn');
+                btn.textContent = 'Invitation Expired';
+                btn.style.background = '#6c757d';
+                btn.disabled = true;
+                btn.style.cursor = 'not-allowed';
+                
+                document.getElementById('errorMessage').innerHTML = 'This invitation has expired. Please request a new invitation.';
+                document.getElementById('errorMessage').classList.remove('hidden');
+            }
+        }
+        
+        function handleInstallClick() {
+            const btn = document.getElementById('installBtn');
+            const btnText = document.getElementById('btnText');
+            const loading = document.getElementById('loading');
+            
+            // Show loading state
+            loading.classList.remove('hidden');
+            btnText.textContent = 'Opening App...';
+            btn.disabled = true;
+            
+            if (isIOS) {
+                // On iOS, try to trigger App Clip or redirect to App Store
+                setTimeout(() => {
+                    // This would normally trigger the App Clip
+                    // For now, we'll simulate the behavior
+                    if (isAppClip) {
+                        // App Clip is opening
+                        btnText.textContent = 'App Clip Opening...';
+                    } else {
+                        // Redirect to App Store (you'll need to update this URL when you have an App Store ID)
+                        btnText.textContent = 'Redirecting to App Store...';
+                        // window.location.href = 'https://apps.apple.com/app/id0'; // Update with real App Store URL
+                        
+                        // For now, show message that app is coming soon
+                        setTimeout(() => {
+                            loading.classList.add('hidden');
+                            btnText.textContent = 'Coming Soon to App Store';
+                            btn.style.background = '#6c757d';
+                            document.getElementById('errorMessage').innerHTML = 'SpeakEasy will be available in the App Store soon! Keep this invitation code safe.';
+                            document.getElementById('errorMessage').classList.remove('hidden');
+                        }, 2000);
+                    }
+                }, 1000);
+            } else {
+                // Non-iOS device
+                setTimeout(() => {
+                    loading.classList.add('hidden');
+                    btnText.textContent = 'iOS Required';
+                    btn.style.background = '#6c757d';
+                    btn.disabled = true;
+                    document.getElementById('fallbackMessage').classList.remove('hidden');
+                }, 1000);
+            }
+        }
+        
+        // Store invitation code in localStorage for potential later use
+        if (inviteCode) {
+            localStorage.setItem('speakeasy_invite_code', inviteCode);
+            localStorage.setItem('speakeasy_invite_tier', memberTier);
+            localStorage.setItem('speakeasy_invite_expires', expiresAt || '');
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayInvitationDetails();
+            
+            // Update button text based on device
+            if (!isIOS) {
+                document.getElementById('btnText').textContent = 'View Details';
+            }
+        });
+        
+        // Handle App Clip specific functionality
+        if (isIOS && 'serviceWorker' in navigator) {
+            // This is where you'd implement App Clip specific features
+            console.log('App Clip environment detected');
         }
     </script>
 </body>

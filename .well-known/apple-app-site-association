@@ -2,14 +2,14 @@
     "applinks": {
         "apps": [],
         "details": [{
-            "appIDs": ["TEAMID.com.yourcompany.speakeasy.clip"],
+            "appIDs": ["A53862VV94.SpeakEasy.Speak-Easy-Members", "A53862VV94.SpeakEasy.Speak-Easy-Members.Clip"],
             "components": [{
                 "/": "/clip",
-                "comment": "App Clip URLs"
+                "comment": "App Clip URLs for SpeakEasy invitations"
             }]
         }]
     },
     "appclips": {
-        "apps": ["TEAMID.com.yourcompany.speakeasy.clip"]
+        "apps": ["A53862VV94.SpeakEasy.Speak-Easy-Members.Clip"]
     }
 }
