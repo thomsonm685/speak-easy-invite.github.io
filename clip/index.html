@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SpeakEasy Invitation</title>
+    <meta name="apple-itunes-app" content="app-clip-bundle-id=com.yourcompany.speakeasy.clip">
+</head>
+<body>
+    <h1>You're invited to SpeakEasy!</h1>
+    <p>This page will launch the App Clip on iOS devices.</p>
+    <p>On other devices, it shows invitation details.</p>
+    
+    <script>
+        // Extract invitation code from URL
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        const tier = params.get('tier');
+        
+        if (code) {
+            document.body.innerHTML += `
+                <div>
+                    <h2>Invitation Details</h2>
+                    <p>Code: ${code}</p>
+                    <p>Tier: ${tier}</p>
+                    <p>Download SpeakEasy from the App Store to use this invitation.</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
